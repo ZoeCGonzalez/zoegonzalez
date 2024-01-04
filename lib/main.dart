@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zoegonzalez/scroll.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,9 +9,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Portafolio',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,  
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: PortfolioScreen(),
@@ -23,7 +25,49 @@ class PortfolioScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Mi Portafolio'),
+        backgroundColor: Colors.amber,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Zoe Gonzalez',
+              style: TextStyle(color: Colors.white),
+            ),
+            Row(
+              children: [
+                TextButton(
+                  onPressed: () {
+                    // Acción al presionar 'Home'
+                  },
+                  child: Text(
+                    'Home',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                SizedBox(width: 10),
+                TextButton(
+                  onPressed: () {
+                    // Acción al presionar 'Portafolio'
+                  },
+                  child: Text(
+                    'Portafolio',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+                SizedBox(width: 10),
+                TextButton(
+                  onPressed: () {
+                    // Acción al presionar 'Contacto'
+                  },
+                  child: Text(
+                    'Contacto',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -32,12 +76,12 @@ class PortfolioScreen extends StatelessWidget {
             // Sección de cabecera
             Container(
               padding: EdgeInsets.all(20.0),
-              color: Colors.blue,
+              color: Colors.grey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Hola,',
+                    'Bienvenidos',
                     style: TextStyle(
                       fontSize: 40.0,
                       color: Colors.white,
@@ -45,7 +89,7 @@ class PortfolioScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'Soy [Tu Nombre]',
+                    'Zoe',
                     style: TextStyle(
                       fontSize: 30.0,
                       color: Colors.white,
@@ -53,7 +97,7 @@ class PortfolioScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 10.0),
                   Text(
-                    'Desarrollador Flutter',
+                    ' Flutter',
                     style: TextStyle(
                       fontSize: 20.0,
                       color: Colors.white,
@@ -64,39 +108,233 @@ class PortfolioScreen extends StatelessWidget {
             ),
             // Sección de proyectos o trabajos
             Container(
-              padding: EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
-              color: Colors.grey[200],
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              height: MediaQuery.of(context).size.height * 0.6,
+              child: Row(
                 children: [
-                  Text(
-                    'Proyectos',
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        SizedBox(height: 20.0),
+                        Text(
+                          'Proyectos 1',
+                          style: TextStyle(
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 10.0),
+                        // Proyecto 1 con ExpansionTile
+                        ExpansionTile(
+                          title: Text('Proyecto 1'),
+                          subtitle: Text('Descripción del Proyecto 1'),
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Text(
+                                'Más detalles del Proyecto 1 aquí...',
+                                style: TextStyle(fontSize: 16.0),
+                              ),
+                            ),
+                          ],
+                        ),
+                        // Proyecto 2 con ExpansionTile
+                        ExpansionTile(
+                          title: Text('Proyecto 2'),
+                          subtitle: Text('Descripción del Proyecto 2'),
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Text(
+                                'Más detalles del Proyecto 2 aquí...',
+                                style: TextStyle(fontSize: 16.0),
+                              ),
+                            ),
+                          ],
+                        ),
+                        // Agrega más proyectos aquí si es necesario
+                      ],
                     ),
                   ),
-                  SizedBox(height: 20.0),
-                  // Aquí puedes agregar tarjetas o widgets para tus proyectos
-                  // Por ejemplo:
-                  Card(
-                    elevation: 3.0,
-                    child: ListTile(
-                      title: Text('Proyecto 1'),
-                      subtitle: Text('Descripción del Proyecto 1'),
-                    ),
-                  ),
-                  Card(
-                    elevation: 3.0,
-                    child: ListTile(
-                      title: Text('Proyecto 2'),
-                      subtitle: Text('Descripción del Proyecto 2'),
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        SizedBox(height: 20.0),
+                        Text(
+                          'Proyectos 2',
+                          style: TextStyle(
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 10.0),
+                        // Proyecto 3 con ExpansionTile
+                        ExpansionTile(
+                          title: Text('Proyecto 3'),
+                          subtitle: Text('Descripción del Proyecto 3'),
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Text(
+                                'Más detalles del Proyecto 3 aquí...',
+                                style: TextStyle(fontSize: 16.0),
+                              ),
+                            ),
+                          ],
+                        ),
+                        // Proyecto 4 con ExpansionTile
+                        ExpansionTile(
+                          title: Text('Proyecto 4'),
+                          subtitle: Text('Descripción del Proyecto 4'),
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: Text(
+                                'Más detalles del Proyecto 4 aquí...',
+                                style: TextStyle(fontSize: 16.0),
+                              ),
+                            ),
+                          ],
+                        ),
+                        // Agrega más proyectos aquí si es necesario
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
+            Scroller()
             // Otras secciones como habilidades, experiencia, etc.
+          ],
+        ),
+      ),
+      
+    );
+  }
+}
+class Scroller extends StatelessWidget {
+  const Scroller({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Container(
+              width: 150,
+              height: 150,
+              color: Colors.red,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Contenedor 1',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(width: 16),
+            Container(
+              width: 150,
+              height: 150,
+              color: Colors.blue,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Contenedor 2',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(width: 16),
+            Container(
+              width: 150,
+              height: 150,
+              color: Colors.green,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Contenedor 3',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(width: 16),
+            Container(
+              width: 150,
+              height: 150,
+              color: Colors.yellow,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Contenedor 4',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(width: 16),
+            Container(
+              width: 150,
+              height: 150,
+              color: Colors.yellow,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Contenedor 5',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(width: 16),
+            Container(
+              width: 150,
+              height: 150,
+              color: Colors.yellow,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Contenedor 6',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
